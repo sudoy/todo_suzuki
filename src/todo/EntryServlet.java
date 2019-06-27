@@ -8,11 +8,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import todo.forms.EntryForm;
+import todo.services.EntryService;
+
 @WebServlet("/entry.html")
 public class EntryServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		//入力情報を取得
+		req.setCharacterEncoding("UTF-8");
+		String title = req.getParameter("title");
+		String detail = req.getParameter("detail");
+		String importance = req.getParameter("importance");
+		String limit_time = req.getParameter("limit_time");
+		EntryForm f = new EntryForm(title, detail, importance, limit_time);
+
+		//insert
+		new EntryService().insert(f);
+		resp.sendRedirect("index.html");
 	}
 }

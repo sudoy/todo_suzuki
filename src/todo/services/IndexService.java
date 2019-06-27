@@ -1,4 +1,4 @@
-package todo;
+package todo.services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

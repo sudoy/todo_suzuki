@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import todo.services.IndexService;
+
 @WebServlet("/index.html")
 public class IndexServlet extends HttpServlet {
 
