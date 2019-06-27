@@ -2,24 +2,24 @@ package todo.forms;
 
 public class IndexForm {
 
-	private String list_id;
+	private String id;
 	private String title;
 	private String importance;
-	private String limit_time;
+	private String limit;
 
-	public IndexForm(String list_id, String title, String importance, String limit_time) {
+	public IndexForm(String id, String title, String importance, String limit) {
 		super();
-		this.list_id = list_id;
+		this.id = id;
 		this.title = title;
 		this.importance = importance;
-		this.limit_time = limit_time;
+		this.limit = limit;
 	}
 
-	public String getList_id() {
-		return list_id;
+	public String getId() {
+		return id;
 	}
-	public void setList_id(String list_id) {
-		this.list_id = list_id;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -33,12 +33,10 @@ public class IndexForm {
 	public void setImportance(String importance) {
 		this.importance = importance;
 	}
-	public String getLimit_time() {
-		return limit_time;
+	public String getLimit() {
+		return limit;
 	}
-	public void setLimit_time(String limit_time) {
-		this.limit_time = limit_time;
+	public void setLimit(String limit) {
+		this.limit = limit;
 	}
-
-
 }

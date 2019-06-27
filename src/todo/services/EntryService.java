@@ -14,7 +14,7 @@ public class EntryService {
 		PreparedStatement ps = null;
 		String sql = null;
 		try{
-			//データベースの接続を確立
+			//データベース接続
 	        con = DBUtils.getConnection();
 
 			sql = "INSERT INTO list(title, detail, importance, limit_time) VALUES(?,?,?,?)";
@@ -25,7 +25,7 @@ public class EntryService {
 			ps.setString(1, form.getTitle());
 			ps.setString(2, form.getDetail());
 			ps.setString(3, form.getImportance());
-			ps.setString(4, form.getLimit_time());
+			ps.setString(4, form.getLimit());
 
 			//INSERT命令を実行
 			ps.executeUpdate();

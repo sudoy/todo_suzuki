@@ -28,8 +28,8 @@ public class EntryServlet extends HttpServlet {
 		String title = req.getParameter("title");
 		String detail = req.getParameter("detail");
 		String importance = req.getParameter("importance");
-		String limit_time = req.getParameter("limit_time");
-		EntryForm f = new EntryForm(title, detail, importance, limit_time);
+		String limit = req.getParameter("limit");
+		EntryForm f = new EntryForm(title, detail, importance, limit);
 
 		//insert
 		new EntryService().insert(f);
