@@ -1,20 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>index</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link href="css/mystyle.css" rel="stylesheet">
-</head>
-<body class="background-gray">
 
-	<!--一番上-->
-	<jsp:include page="header.jsp" />
-
+<!--上-->
+<jsp:include page="header.jsp" />
 
 	<div class="container">
 
@@ -66,7 +54,5 @@
 
 	</div><!--div class="container"-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<!--下-->
+<jsp:include page="footer.jsp" />
