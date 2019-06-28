@@ -39,19 +39,16 @@ public class UpdateServlet extends HttpServlet {
 		//入力情報を取得
 		req.setCharacterEncoding("UTF-8");
 		String title = req.getParameter("title");
-		if(title == null) {title = "";}
 		String detail = req.getParameter("detail");
 		String importance = req.getParameter("importance");
 		if(importance == null) {importance = "";}
 		String limitTime = req.getParameter("limitTime");
-		if(limitTime == null) {limitTime = "";}
 		String listId = req.getParameter("listId");
-		if(listId == null) {listId = "";}
 		UpdateForm f = new UpdateForm(listId, title, detail, importance, limitTime);
 
 
 		//バリデーション
-		List<String> error = new ArrayList<>();error.add("test");
+		List<String> error = new ArrayList<>();
 		error = validate(f);//エラーメッセージのリストを取得
 
 		//insert
