@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!--上-->
 <jsp:include page="header.jsp" />
@@ -34,17 +35,38 @@
 				<div class="col-sm-1">
 					<div class="radio">
 						<label>
-	 						<input type="radio" name="importance" value="3" checked>★★★
+						<c:choose>
+							<c:when test="${empty form.importance or form.importance == '3'}">
+	 							<input type="radio" name="importance" value="3" checked>
+	 						</c:when>
+	 						<c:when test="${form.importance != '3'}">
+	 							<input type="radio" name="importance" value="3">
+	 						</c:when>
+	 					</c:choose>★★★
 						</label>
 					</div>
 					<div class="radio">
 						<label>
-	 						<input type="radio" name="importance" value="2">★★
+						<c:choose>
+							<c:when test="${empty form.importance or form.importance != '2'}">
+								<input type="radio" name="importance" value="2">
+							</c:when>
+							<c:when test="${form.importance == '2'}">
+	 							<input type="radio" name="importance" value="2" checked>
+	 						</c:when>
+	 					</c:choose>★★
 						</label>
 					</div>
 					<div class="radio">
 						<label>
-	 						<input type="radio" name="importance" value="1">★
+						<c:choose>
+							<c:when test="${empty form.importance or form.importance != '1'}">
+								<input type="radio" name="importance" value="1">
+							</c:when>
+							<c:when test="${form.importance == '1'}">
+	 							<input type="radio" name="importance" value="1" checked>
+	 						</c:when>
+	 					</c:choose>★
 						</label>
 					</div>
 				</div>
