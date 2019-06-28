@@ -63,7 +63,7 @@ public class EntryServlet extends HttpServlet {
 		//期限
 		String lt = form.getLimitTime();
 		if(!lt.isEmpty()) {
-			if(lt.matches("^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$")) {
+			if(lt.matches("^[0-9]{4}/[0-9]{2}/[0-9]{2}$")) {
 				try {
 					LocalDate.parse(lt.replace("/", "-"));
 				} catch (Exception e) {
@@ -72,6 +72,10 @@ public class EntryServlet extends HttpServlet {
 			}else {
 				error.add("期限は「YYYY/MM/DD」形式で入力して下さい。");
 			}
+		}
+		//重要度
+		if(!form.getImportance().matches("^[1-3]$")) {
+			error.add("重要度のチェックでエラーが発生しました。");
 		}
 
 		return error;
