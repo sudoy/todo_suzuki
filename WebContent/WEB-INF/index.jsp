@@ -23,10 +23,10 @@
 			<tbody>
 			<c:forEach var="list" items="${list}">
 				<tr>
-					<td>${list.id}</td>
+					<td>${list.listId}</td>
 					<td><a href="update.html">${list.title}</a></td>
 					<td>${list.importance}</td>
-					<td>${list.limit}</td>
+					<td>${list.limitTime}</td>
 				</tr>
 			</c:forEach>
 			</tbody>

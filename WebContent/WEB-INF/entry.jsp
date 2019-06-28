@@ -53,7 +53,7 @@
 			<div class="form-group">
 				<label for="limit" class="col-sm-offset-1 col-sm-1 control-label">期限</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="limit" name="limit" placeholder="期限">
+					<input type="text" class="form-control" id="limit" name="limitTime" placeholder="期限">
 				</div>
 			</div>
 

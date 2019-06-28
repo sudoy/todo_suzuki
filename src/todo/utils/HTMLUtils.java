@@ -12,11 +12,11 @@ public class HTMLUtils {
 		return star;
 	}
 
-	public static String dateFormat(String limit) {
+	public static String dateFormat(String limitTime) {
 
-		String date = limit;
-		if(limit != null) {
-			date = limit.replace("-", "/");
+		String date = limitTime;
+		if(limitTime != null) {
+			date = limitTime.replace("-", "/");
 		}
 
 		return date;

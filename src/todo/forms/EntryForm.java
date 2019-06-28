@@ -5,16 +5,15 @@ public class EntryForm {
 	private String title;
 	private String detail;
 	private String importance;
-	private String limit;
+	private String limitTime;
 
-	public EntryForm(String title, String detail, String importance, String limit) {
+	public EntryForm(String title, String detail, String importance, String limitTime) {
 		super();
 		this.title = title;
 		this.detail = detail;
 		this.importance = importance;
-		this.limit = limit;
+		this.limitTime = limitTime;
 	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -33,12 +32,10 @@ public class EntryForm {
 	public void setImportance(String importance) {
 		this.importance = importance;
 	}
-	public String getLimit() {
-		return limit;
+	public String getLimitTime() {
+		return limitTime;
 	}
-
-	public void setLimit(String limit) {
-		this.limit = limit;
+	public void setLimitTime(String limitTime) {
+		this.limitTime = limitTime;
 	}
-
 }

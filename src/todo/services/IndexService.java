@@ -34,15 +34,15 @@ public class IndexService {
 
 			//リストに追加
 			while(rs.next()){
-				String id = rs.getString("list_id");
+				String listId = rs.getString("list_id");
 				String title = rs.getString("title");
 				String importance = rs.getString("importance");
-				String limit = rs.getString("limit_time");
+				String limitTime = rs.getString("limit_time");
 				//フォーマット変更
 				importance = HTMLUtils.importanceFormat(importance);
-				limit = HTMLUtils.dateFormat(limit);
+				limitTime = HTMLUtils.dateFormat(limitTime);
 
-				IndexForm f = new IndexForm(id, title, importance, limit);
+				IndexForm f = new IndexForm(listId, title, importance, limitTime);
 				list.add(f);
 			}
 

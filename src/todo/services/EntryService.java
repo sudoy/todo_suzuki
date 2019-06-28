@@ -24,8 +24,20 @@ public class EntryService {
 			//INSERT命令にポストデータの内容をセット
 			ps.setString(1, form.getTitle());
 			ps.setString(2, form.getDetail());
-			ps.setString(3, form.getImportance());
-			ps.setString(4, form.getLimit());
+
+				//重要度の値チェック
+			String Importance = form.getImportance();
+			if(!Importance.matches("^[1-3]$")) {
+				Importance = "1";
+			}
+			ps.setString(3, Importance);
+
+				//期限が空欄の場合
+			String LimitTime = form.getLimitTime();
+			if(LimitTime.equals("")) {
+				LimitTime = null;
+			}
+			ps.setString(4, LimitTime);
 
 			//INSERT命令を実行
 			ps.executeUpdate();
