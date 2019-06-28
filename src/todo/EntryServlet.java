@@ -31,6 +31,7 @@ public class EntryServlet extends HttpServlet {
 		String title = req.getParameter("title");
 		String detail = req.getParameter("detail");
 		String importance = req.getParameter("importance");
+		if(importance == null) {importance = "";}
 		String limitTime = req.getParameter("limitTime");
 		EntryForm f = new EntryForm(title, detail, importance, limitTime);
 
