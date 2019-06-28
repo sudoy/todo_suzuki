@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import todo.forms.EntryForm;
 import todo.services.EntryService;
+import todo.utils.HTMLUtils;
 
 @WebServlet("/entry.html")
 public class EntryServlet extends HttpServlet {
@@ -20,6 +21,8 @@ public class EntryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HTMLUtils htmlUtils = new HTMLUtils();
+		req.setAttribute("htmlUtils",htmlUtils);
 		getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 	}
 
@@ -46,9 +49,10 @@ public class EntryServlet extends HttpServlet {
 		}else {
 			req.setAttribute("error", error);
 			req.setAttribute("form", f);
+			HTMLUtils htmlUtils = new HTMLUtils(f);
+			req.setAttribute("htmlUtils",htmlUtils);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 		}
-
 	}
 
 	//バリデーション
