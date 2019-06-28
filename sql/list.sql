@@ -1,7 +1,7 @@
 
 create table list(
 	list_id int primary key auto_increment,
-	title varchar(50) not null,
+	title varchar(200) not null,
 	detail text,
 	importance int(3) default'1',
 	limit_time date
