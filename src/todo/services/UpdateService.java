@@ -45,7 +45,7 @@ public class UpdateService {
 				//フォーマット変更
 				limitTime = HTMLUtils.dateFormat(limitTime);
 			}
-			form = new UpdateForm(title, detail, importance, limitTime);
+			form = new UpdateForm(listId, title, detail, importance, limitTime);
 
 		}catch(Exception e){
 			throw new ServletException(e);
@@ -54,5 +54,40 @@ public class UpdateService {
 		}
 
 		return  form;
+	}
+
+	public void update(UpdateForm form) {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+		try{
+			//データベース接続
+	        con = DBUtils.getConnection();
+
+			sql = "UPDATE list SET title = ?, detail = ?, importance = ?, limit_time = ? WHERE list_id = ?";
+			//INSERT命令の準備
+			ps = con.prepareStatement(sql);
+
+			//INSERT命令にポストデータの内容をセット
+			ps.setString(1, form.getTitle());
+			ps.setString(2, form.getDetail());
+			ps.setString(3, form.getImportance());
+				//期限が空欄の場合
+			String LimitTime = form.getLimitTime();
+			if(LimitTime.equals("")) {
+				LimitTime = null;
+			}
+			ps.setString(4, LimitTime);
+			ps.setString(5, form.getListId());
+
+			//INSERT命令を実行
+			ps.executeUpdate();
+			System.out.println("update");
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}finally{
+			DBUtils.close(con, ps);
+		}
 	}
 }

@@ -2,13 +2,15 @@ package todo.forms;
 
 public class UpdateForm {
 
+	private String listId;
 	private String title;
 	private String detail;
 	private String importance;
 	private String limitTime;
 
-	public UpdateForm(String title, String detail, String importance, String limitTime) {
+	public UpdateForm(String listId, String title, String detail, String importance, String limitTime) {
 		super();
+		this.listId = listId;
 		this.title = title;
 		this.detail = detail;
 		this.importance = importance;
@@ -45,6 +47,14 @@ public class UpdateForm {
 
 	public void setLimitTime(String limitTime) {
 		this.limitTime = limitTime;
+	}
+
+	public String getListId() {
+		return listId;
+	}
+
+	public void setListId(String listId) {
+		this.listId = listId;
 	}
 
 }
