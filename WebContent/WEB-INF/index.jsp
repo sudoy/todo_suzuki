@@ -24,7 +24,7 @@
 			<c:forEach var="list" items="${list}">
 				<tr>
 					<td>${list.listId}</td>
-					<td><a href="update.html">${list.title}</a></td>
+					<td><a href="update.html?listId=${list.listId}">${list.title}</a></td>
 					<td>${list.importance}</td>
 					<td>${list.limitTime}</td>
 				</tr>

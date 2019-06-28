@@ -1,16 +1,15 @@
 package todo.utils;
 
-import todo.forms.EntryForm;
-
 public class HTMLUtils {
 
-	private EntryForm f;
+	private String importance;
 
 	public HTMLUtils() {}
-	public HTMLUtils(EntryForm f) {
+	public HTMLUtils(String importance) {
 		super();
-		this.f = f;
+		this.importance = importance;
 	}
+
 
 	public static String importanceFormat(String importance) {
 
@@ -35,7 +34,7 @@ public class HTMLUtils {
 	public String creareRadioTags(int num){
 
 		String radioTag = "";
-		String imp = f == null ? "3" : f.getImportance();
+		String imp = (importance == null) ? "3" : importance;
 
 		if(num == 3) {
 			if(imp.isEmpty() || imp.equals("3")) {

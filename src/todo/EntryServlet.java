@@ -49,7 +49,7 @@ public class EntryServlet extends HttpServlet {
 		}else {
 			req.setAttribute("error", error);
 			req.setAttribute("form", f);
-			HTMLUtils htmlUtils = new HTMLUtils(f);
+			HTMLUtils htmlUtils = new HTMLUtils(importance);
 			req.setAttribute("htmlUtils",htmlUtils);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 		}

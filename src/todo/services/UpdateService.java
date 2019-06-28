@@ -3,48 +3,49 @@ package todo.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 
-import todo.forms.IndexForm;
+import todo.forms.UpdateForm;
 import todo.utils.DBUtils;
 import todo.utils.HTMLUtils;
 
-public class IndexService {
+public class UpdateService {
 
-	public List<IndexForm> findTodoList() throws ServletException{
+	public UpdateForm findListOf(String listId) throws ServletException{
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
 		ResultSet rs = null;
-		List<IndexForm> list = new ArrayList<>();
+		UpdateForm form;
 
 		try{
 			//データベース接続
 			con = DBUtils.getConnection();
 
 			//SQL
-			sql = "SELECT list_id,title,importance,limit_time FROM list ORDER BY list_id";
+			sql = "SELECT title,detail,importance,limit_time FROM list WHERE list_id = ? ORDER BY list_id";
 			//SELECT命令の準備・実行
 			ps = con.prepareStatement(sql);
+			ps.setString(1, listId);
 			rs = ps.executeQuery();
 
-			//リストに追加
-			while(rs.next()){
-				String listId = rs.getString("list_id");
-				String title = rs.getString("title");
-				String importance = rs.getString("importance");
-				String limitTime = rs.getString("limit_time");
-				//フォーマット変更
-				importance = HTMLUtils.importanceFormat(importance);
-				limitTime = HTMLUtils.dateFormat(limitTime);
 
-				IndexForm f = new IndexForm(listId, title, importance, limitTime);
-				list.add(f);
+			//update.jspに渡すform用意
+			String title = "";
+			String detail = "";
+			String importance = "";
+			String limitTime = "";
+			while(rs.next()){
+				title = rs.getString("title");
+				detail = rs.getString("detail");
+				importance = rs.getString("importance");
+				limitTime = rs.getString("limit_time");
+				//フォーマット変更
+				limitTime = HTMLUtils.dateFormat(limitTime);
 			}
+			form = new UpdateForm(title, detail, importance, limitTime);
 
 		}catch(Exception e){
 			throw new ServletException(e);
@@ -52,6 +53,6 @@ public class IndexService {
 			DBUtils.close(con, ps, rs);
 		}
 
-		return  list;
+		return  form;
 	}
 }
