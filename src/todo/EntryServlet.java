@@ -45,6 +45,7 @@ public class EntryServlet extends HttpServlet {
 			resp.sendRedirect("index.html");
 		}else {
 			req.setAttribute("error", error);
+			req.setAttribute("form", f);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 		}
 

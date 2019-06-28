@@ -18,14 +18,14 @@
 			<div class="form-group">
 				<label for="title" class="col-sm-offset-1 col-sm-1 control-label">題名</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="title" name="title" placeholder="題名">
+					<input type="text" class="form-control" id="title" name="title" value="${form.title}" placeholder="題名">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="details" class="col-sm-offset-1 col-sm-1 control-label">詳細</label>
+				<label for="detail" class="col-sm-offset-1 col-sm-1 control-label">詳細</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" rows="3" id="details" name="details" placeholder="詳細"></textarea>
+					<textarea class="form-control" rows="3" id="detail" name="detail" placeholder="詳細">${form.detail}</textarea>
 				</div>
 			</div>
 
@@ -53,7 +53,7 @@
 			<div class="form-group">
 				<label for="limit" class="col-sm-offset-1 col-sm-1 control-label">期限</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="limit" name="limitTime" placeholder="期限">
+					<input type="text" class="form-control" id="limit" name="limitTime" value="${form.limitTime}" placeholder="期限">
 				</div>
 			</div>
 
