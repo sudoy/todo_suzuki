@@ -83,7 +83,6 @@ public class UpdateService {
 
 			//INSERT命令を実行
 			ps.executeUpdate();
-			System.out.println("update");
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}finally{

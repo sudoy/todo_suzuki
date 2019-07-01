@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import todo.forms.UpdateForm;
 import todo.services.UpdateService;
@@ -52,13 +53,15 @@ public class UpdateServlet extends HttpServlet {
 		error = validate(f);//エラーメッセージのリストを取得
 
 		//insert
+		HttpSession session = req.getSession();
 		if(error.isEmpty()) {//リストが空だったら実行
 			new UpdateService().update(f);
+			session.setAttribute("complete", "No."+ listId +"のTodoを更新しました。");
 			resp.sendRedirect("index.html");
 		}else {
-			req.setAttribute("error", error);
+			session.setAttribute("error", error);
 			req.setAttribute("form", f);
-			HTMLUtils htmlUtils = new HTMLUtils(importance);
+			HTMLUtils htmlUtils = new HTMLUtils(importance);//重要度のタグ用
 			req.setAttribute("htmlUtils",htmlUtils);
 			getServletContext().getRequestDispatcher("/WEB-INF/update.jsp").forward(req, resp);
 		}

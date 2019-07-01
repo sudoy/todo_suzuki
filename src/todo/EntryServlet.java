@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import todo.forms.EntryForm;
 import todo.services.EntryService;
@@ -43,11 +44,13 @@ public class EntryServlet extends HttpServlet {
 		error = validate(f);//エラーメッセージのリストを取得
 
 		//insert
+		HttpSession session = req.getSession();
 		if(error.isEmpty()) {//リストが空だったら実行
 			new EntryService().insert(f);
+			session.setAttribute("complete", "新しいTodoを登録しました。");
 			resp.sendRedirect("index.html");
 		}else {
-			req.setAttribute("error", error);
+			session.setAttribute("error", error);
 			req.setAttribute("form", f);
 			HTMLUtils htmlUtils = new HTMLUtils(importance);
 			req.setAttribute("htmlUtils",htmlUtils);
