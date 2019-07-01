@@ -26,7 +26,6 @@ public class DeleteService {
 			ps.setString(1, listId); //削除するidの設定
 			ps.executeUpdate();
 
-
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}finally{
