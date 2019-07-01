@@ -23,8 +23,9 @@ public class IndexServlet extends HttpServlet {
 		//メッセージを表示・リセット
 		HttpSession session = req.getSession();
 		req.setAttribute("complete", session.getAttribute("complete"));
-		if(session.getAttribute("error").toString().contains("削除")) {
-			req.setAttribute("error", session.getAttribute("error"));
+		Object error = session.getAttribute("error");
+		if(error != null && error.toString().contains("削除")) {
+			req.setAttribute("error", error);
 		}
 		session.setAttribute("complete", "");
 		session.setAttribute("error", "");
