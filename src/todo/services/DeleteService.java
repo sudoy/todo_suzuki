@@ -10,7 +10,7 @@ import todo.utils.DBUtils;
 
 public class DeleteService {
 
-	public void delete(String listId) throws ServletException {
+	public int delete(String listId) throws ServletException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -30,7 +30,8 @@ public class DeleteService {
 			sql = "DELETE FROM list WHERE list_id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, listId); //削除するidの設定
-			ps.executeUpdate();
+			int i = ps.executeUpdate();
+			return i;
 
 //			//idを連番にしたい
 //			sql = "SET @i := 0";

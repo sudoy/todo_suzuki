@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!--上-->
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"><jsp:param name="page" value="index.html" /></jsp:include>
 
 	<div class="container">
 

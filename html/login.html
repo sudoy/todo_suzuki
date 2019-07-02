@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Todoリスト</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="css/mystyle.css" rel="stylesheet">
+</head>
+<body class="background-gray">
+
+	<nav class="navbar navbar-default background-white">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Todoリスト</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="panel panel-default col-sm-offset-3 col-sm-6 login-form">
+	  <div class="panel-body">
+	    	<h4 class="login-title">ログイン</h4>
+
+	    	<div class="alert alert-danger alert-dismissible background-pink" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4><strong> エラーが発生しました！</strong></h4>
+				<ul>
+					<li>メールアドレス、またはパスワードが間違っています。</li>
+				</ul>
+			</div>
+
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="Email" class="col-sm-4 control-label">メールアドレス</label>
+					<div class="col-sm-7">
+						<input type="email" class="form-control" id="Email" name="email" placeholder="メールアドレス">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Password" class="col-sm-4 control-label">パスワード</label>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="Password" name="password" placeholder="パスワード">
+					</div>
+				</div>
+
+				<div class="pull-right login-button">
+					<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> ログイン</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

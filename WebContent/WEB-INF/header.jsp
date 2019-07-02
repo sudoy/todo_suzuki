@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,8 +14,24 @@
 
 <nav class="navbar navbar-default background-white">
 	<div class="container">
+
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Todoリスト</a>
+			<a class="navbar-brand" href="${param.page}">Todoリスト</a>
 		</div>
+
+		<%--ログアウトのボタン--%>
+		<c:if test="${param.page == 'index.html'}">
+		<form class="navbar-form navbar-right">
+			<div class="dropdown">
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					${username} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="logout">ログアウト</a></li>
+				</ul>
+			</div>
+		</form>
+		</c:if>
+
 	</div>
 </nav>

@@ -24,8 +24,12 @@ public class DeleteServlet extends HttpServlet {
 		if(listId.isEmpty()) {
 			session.setAttribute("error", "No."+ listId +"の削除ができませんでした。");
 		}else {
-			new DeleteService().delete(listId);
-			session.setAttribute("complete",  "No."+ listId +"のTodoを削除しました。");
+			int count = new DeleteService().delete(listId);
+			if(count > 0) { //count…削除件数
+				session.setAttribute("complete",  "No."+ listId +"のTodoを削除しました。");
+			}else {
+				session.setAttribute("error", "No."+ listId +"の削除ができませんでした。");
+			}
 		}
 		resp.sendRedirect("index.html");
 	}

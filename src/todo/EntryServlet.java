@@ -22,6 +22,14 @@ public class EntryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		//ログインのチェック
+		HttpSession session = req.getSession();
+		if(session.getAttribute("username") == null) {
+			session.setAttribute("error", "ログインしてください");
+			resp.sendRedirect("login.html");
+			return;
+		}
+
 		HTMLUtils htmlUtils = new HTMLUtils();
 		req.setAttribute("htmlUtils",htmlUtils);
 		getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);

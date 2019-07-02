@@ -22,6 +22,14 @@ public class UpdateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		//ログインのチェック
+		HttpSession session = req.getSession();
+		if(session.getAttribute("username") == null) {
+			session.setAttribute("error", "ログインしてください");
+			resp.sendRedirect("login.html");
+			return;
+		}
+
 		//index.jspからlist_idの値を取得
 		String listId = req.getParameter("listId");
 

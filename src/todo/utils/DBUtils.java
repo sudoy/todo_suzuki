@@ -46,15 +46,28 @@ public class DBUtils {
 		} catch (Exception e) {}
 
 	}
+	public static void close(PreparedStatement p,ResultSet r){
+		try {
+			if(p != null){
+				p.close();
+			}
+			if(r != null){
+				r.close();
+			}
+		} catch (Exception e) {}
+
+	}
 	public static void colse(Connection c){
 		try{
 			if(c != null){ c.close(); }
 		}catch(Exception e) {}
 	}
-	public static void close(PreparedStatement p){
-		try{
-			if(p != null){ p.close(); }
-		}catch(Exception e) {}
+	public static void close(PreparedStatement... ps){
+		for(PreparedStatement p : ps) {
+			try{
+				if(p != null){ p.close(); }
+			}catch(Exception e) {}
+		}
 	}
 	public static void close(ResultSet r){
 		try{

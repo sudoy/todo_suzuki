@@ -17,11 +17,18 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		//ログインのチェック
+		HttpSession session = req.getSession();
+		if(session.getAttribute("username") == null) {
+			session.setAttribute("error", "ログインしてください");
+			resp.sendRedirect("login.html");
+			return;
+		}
+
 		//formのリストを取得してJSPへ
 		req.setAttribute("list", new IndexService().findTodoList());
 
 		//メッセージを表示・リセット
-		HttpSession session = req.getSession();
 		req.setAttribute("complete", session.getAttribute("complete"));
 		Object error = session.getAttribute("error");
 		if(error != null && error.toString().contains("削除")) {
