@@ -33,7 +33,7 @@ public class DeleteService {
 			int i = ps.executeUpdate();
 			return i;
 
-//			//idを連番にしたい
+//			//idを連番にしたいとき
 //			sql = "SET @i := 0";
 //			ps2 = con.prepareStatement(sql);
 //			ps2.executeUpdate();

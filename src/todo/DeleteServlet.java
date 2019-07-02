@@ -18,9 +18,17 @@ public class DeleteServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HttpSession session = req.getSession();
+
+		//ログインのチェック
+		if(session.getAttribute("username") == null) {
+			session.setAttribute("error", "ログインしてください");
+			resp.sendRedirect("login.html");
+			return;
+		}
+
 		String listId = req.getParameter("listId");
 
-		HttpSession session = req.getSession();
 		if(listId.isEmpty()) {
 			session.setAttribute("error", "No."+ listId +"の削除ができませんでした。");
 		}else {

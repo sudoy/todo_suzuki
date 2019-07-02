@@ -15,7 +15,7 @@
 				<div class="form-group">
 					<label for="Email" class="col-sm-4 control-label">メールアドレス</label>
 					<div class="col-sm-7">
-						<input type="email" class="form-control" id="Email" name="mail" value="${inputMail}" placeholder="メールアドレス">
+						<input type="email" class="form-control" id="Email" name="mail" value="${form.inputMail}" placeholder="メールアドレス">
 					</div>
 				</div>
 				<div class="form-group">

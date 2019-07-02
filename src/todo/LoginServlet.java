@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import todo.forms.LoginForm;
 import todo.services.LoginService;
 
 @WebServlet("/login.html")
@@ -31,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 		//入力情報
 		String mail = req.getParameter("mail");
 		String password = req.getParameter("password");
+		LoginForm f = new LoginForm(mail);
 
 		//ログインのチェック
 		String username = new LoginService().login(mail,password);
@@ -40,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			resp.sendRedirect("index.html");
 		}else{
 			req.setAttribute("error", "メールアドレス、またはパスワードが間違っています。");
-			req.setAttribute("inputMail", mail);
+			req.setAttribute("form", f);
 			getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
 		}
 	}

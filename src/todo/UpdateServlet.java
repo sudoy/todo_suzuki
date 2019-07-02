@@ -45,6 +45,15 @@ public class UpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HttpSession session = req.getSession();
+
+		//ログインのチェック
+		if(session.getAttribute("username") == null) {
+			session.setAttribute("error", "ログインしてください");
+			resp.sendRedirect("login.html");
+			return;
+		}
+
 		//入力情報を取得
 		req.setCharacterEncoding("UTF-8");
 		String title = req.getParameter("title");
@@ -61,7 +70,6 @@ public class UpdateServlet extends HttpServlet {
 		error = validate(f);//エラーメッセージのリストを取得
 
 		//insert
-		HttpSession session = req.getSession();
 		if(error.isEmpty()) {//リストが空だったら実行
 			new UpdateService().update(f);
 			session.setAttribute("complete", "No."+ listId +"のTodoを更新しました。");
