@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import todo.forms.UpdateForm;
 import todo.services.UpdateService;
+import todo.utils.HTMLUtils;
 
 @WebServlet("/update.html")
 public class UpdateServlet extends HttpServlet {
@@ -52,8 +53,8 @@ public class UpdateServlet extends HttpServlet {
 
 		//入力情報を取得
 		req.setCharacterEncoding("UTF-8");
-		String title = req.getParameter("title");
-		String detail = req.getParameter("detail");
+		String title = HTMLUtils.textEscape(req.getParameter("title"));
+		String detail = HTMLUtils.textEscape(req.getParameter("detail"));
 		String importance = req.getParameter("importance");
 		if(importance == null) {importance = "";}
 		String limitTime = req.getParameter("limitTime");

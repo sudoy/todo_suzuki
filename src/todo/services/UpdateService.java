@@ -203,7 +203,9 @@ public class UpdateService {
 			throw new RuntimeException(e);
 		}finally{
 			DBUtils.close(con, ps);
-			DBUtils.close(ps2);
+			DBUtils.close(ps2,ps3,ps4);
+			DBUtils.close(rs1);
+			DBUtils.close(rs2);
 		}
 	}
 }

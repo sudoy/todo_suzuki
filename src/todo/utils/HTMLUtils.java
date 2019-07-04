@@ -92,11 +92,23 @@ public class HTMLUtils {
 				buttonClass = "class=\"btn btn-warning active\"";
 			}
 		}else if(num == 1) { //完了ボタン
-			if(display == null || display.equals("all")) {
+			if(display == null || display.equals("all") || display.equals("")) {
 				buttonClass = "class=\"btn btn-warning active\"";
 			}
 		}
 		return buttonClass;
+	}
+
+	public static String textEscape(String text) {
+
+		if(text.contains("<")) {
+			text = text.replace("<", "&lt;");
+		}
+		if(text.contains(">")) {
+			text = text.replace(">", "&gt;");
+		}
+
+		return text;
 	}
 
 }
