@@ -13,5 +13,5 @@ insert into list(title, detail, importance, limit_time) values
 ('タイトル3','テスト3',2,'2019/06/01'),
 ('タイトル4','テスト4',3,null);
 
-
+alter table list add status boolean default'0' not null;
 

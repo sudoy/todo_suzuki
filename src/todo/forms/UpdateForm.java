@@ -7,14 +7,16 @@ public class UpdateForm {
 	private String detail;
 	private String importance;
 	private String limitTime;
+	private String status;
 
-	public UpdateForm(String listId, String title, String detail, String importance, String limitTime) {
+	public UpdateForm(String listId, String title, String detail, String importance, String limitTime, String status) {
 		super();
 		this.listId = listId;
 		this.title = title;
 		this.detail = detail;
 		this.importance = importance;
 		this.limitTime = limitTime;
+		this.status = status;
 	}
 
 	public String getTitle() {
@@ -55,6 +57,14 @@ public class UpdateForm {
 
 	public void setListId(String listId) {
 		this.listId = listId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

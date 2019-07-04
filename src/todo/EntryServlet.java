@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import todo.forms.EntryForm;
 import todo.services.EntryService;
-import todo.utils.HTMLUtils;
 
 @WebServlet("/entry.html")
 public class EntryServlet extends HttpServlet {
@@ -30,8 +29,6 @@ public class EntryServlet extends HttpServlet {
 			return;
 		}
 
-		HTMLUtils htmlUtils = new HTMLUtils();
-		req.setAttribute("htmlUtils",htmlUtils);
 		getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 	}
 
@@ -63,13 +60,13 @@ public class EntryServlet extends HttpServlet {
 		//insert
 		if(error.isEmpty()) {//リストが空だったら実行
 			new EntryService().insert(f);
-			session.setAttribute("complete", "新しいTodoを登録しました。");
+			List<String> complete = new ArrayList<>();
+			complete.add("新しいTodoを登録しました。");
+			session.setAttribute("complete", complete);
 			resp.sendRedirect("index.html");
 		}else {
 			session.setAttribute("error", error);
 			req.setAttribute("form", f);
-			HTMLUtils htmlUtils = new HTMLUtils(importance);
-			req.setAttribute("htmlUtils",htmlUtils);
 			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
 		}
 	}

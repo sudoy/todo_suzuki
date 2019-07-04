@@ -42,3 +42,24 @@
 .login-title{
 	margin-bottom: 35px;
 }
+
+.margin-bottom{
+	margin-bottom: 15px;
+}
+
+.padding-off{
+	padding: 0;
+}
+
+.margin-off{
+	margin: 0;
+}
+
+.nav-btn-sm-margin{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.hide{
+	display: none;
+}

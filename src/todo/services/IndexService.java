@@ -14,7 +14,7 @@ import todo.utils.HTMLUtils;
 
 public class IndexService {
 
-	public List<IndexForm> findTodoList() throws ServletException{
+	public List<IndexForm> findTodoList(String display) throws ServletException{
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -27,7 +27,7 @@ public class IndexService {
 			con = DBUtils.getConnection();
 
 			//SQL
-			sql = "SELECT list_id,title,importance,limit_time FROM list ORDER BY list_id";
+			sql = "SELECT list_id,title,importance,limit_time,status FROM list ORDER BY list_id";
 			//SELECT命令の準備・実行
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -38,12 +38,19 @@ public class IndexService {
 				String title = rs.getString("title");
 				String importance = rs.getString("importance");
 				String limitTime = rs.getString("limit_time");
+				String status = rs.getString("status");
 				//フォーマット変更
 				importance = HTMLUtils.importanceFormat(importance);
 				limitTime = HTMLUtils.dateFormat(limitTime);
 
-				IndexForm f = new IndexForm(listId, title, importance, limitTime);
+				//未完了のみ表示の時
+				IndexForm f = new IndexForm(listId, title, importance, limitTime, status);
+				if(display != null && display.equals("incomp") && status.equals("1")) { //
+					f = new IndexForm(listId, title, importance, limitTime, status,"hide");
+				}
+
 				list.add(f);
+
 			}
 
 		}catch(Exception e){

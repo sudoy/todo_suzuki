@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import todo.forms.UpdateForm;
 import todo.services.UpdateService;
-import todo.utils.HTMLUtils;
 
 @WebServlet("/update.html")
 public class UpdateServlet extends HttpServlet {
@@ -36,8 +35,6 @@ public class UpdateServlet extends HttpServlet {
 		//update.jspにformを渡す
 		UpdateForm form = new UpdateService().findListOf(listId);
 		req.setAttribute("form", form);
-		HTMLUtils htmlUtils = new HTMLUtils(form.getImportance());
-		req.setAttribute("htmlUtils",htmlUtils);
 
 		getServletContext().getRequestDispatcher("/WEB-INF/update.jsp").forward(req, resp);
 	}
@@ -45,9 +42,8 @@ public class UpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		HttpSession session = req.getSession();
-
 		//ログインのチェック
+		HttpSession session = req.getSession();
 		if(session.getAttribute("username") == null) {
 			session.setAttribute("error", "ログインしてください");
 			resp.sendRedirect("login.html");
@@ -62,7 +58,8 @@ public class UpdateServlet extends HttpServlet {
 		if(importance == null) {importance = "";}
 		String limitTime = req.getParameter("limitTime");
 		String listId = req.getParameter("listId");
-		UpdateForm f = new UpdateForm(listId, title, detail, importance, limitTime);
+		String status = req.getParameter("status");
+		UpdateForm f = new UpdateForm(listId, title, detail, importance, limitTime, status);
 
 
 		//バリデーション
@@ -72,13 +69,13 @@ public class UpdateServlet extends HttpServlet {
 		//insert
 		if(error.isEmpty()) {//リストが空だったら実行
 			new UpdateService().update(f);
-			session.setAttribute("complete", "No."+ listId +"のTodoを更新しました。");
+			List<String> complete = new ArrayList<>();
+			complete.add("No."+ listId +"のTodoを更新しました。");
+			session.setAttribute("complete", complete);
 			resp.sendRedirect("index.html");
 		}else {
 			session.setAttribute("error", error);
 			req.setAttribute("form", f);
-			HTMLUtils htmlUtils = new HTMLUtils(importance);//重要度のタグ用
-			req.setAttribute("htmlUtils",htmlUtils);
 			getServletContext().getRequestDispatcher("/WEB-INF/update.jsp").forward(req, resp);
 		}
 	}

@@ -1,14 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="todo.utils.HTMLUtils" %>
 
 <!--上-->
 <jsp:include page="header.jsp"><jsp:param name="page" value="index.html" /></jsp:include>
 
 	<div class="container">
+	<form method="post" action="index.html">
 
 		<!--メッセージ-->
 		<jsp:include page="message.jsp" />
+
+		<!--完了ボタン-->
+		<div class="pull-left margin-bottom">
+			<button type="submit" class="btn btn-success">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 完了
+			</button>
+		</div>
+
+		<!--追加ボタン-->
+		<div class="pull-right margin-bottom">
+			<button type="button" class="btn btn-info" onclick="location.href='entry.html'">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 追加
+			</button>
+		</div>
 
 		<!--Todoリスト-->
 		<table class="table table-border-top">
@@ -22,8 +38,12 @@
 			</thead>
 			<tbody>
 			<c:forEach var="list" items="${list}">
-				<tr>
-					<td>${list.listId}</td>
+				<tr <c:if test="${list.display == 'hide'}">class="hide"</c:if>>
+					<td>
+						<div class="checkbox margin-off">
+							<label>${HTMLUtils.createStatusCheckbox(list.status,list.listId)}<strong>${list.listId}</strong></label>
+						</div>
+					</td>
 					<td><a href="update.html?listId=${list.listId}">${list.title}</a></td>
 					<td>${list.importance}</td>
 					<td>${list.limitTime}</td>
@@ -32,11 +52,7 @@
 			</tbody>
 		</table>
 
-		<!--追加ボタン-->
-		<div>
-			<button type="button" class="btn btn-info" onclick="location.href='entry.html'">追加</button>
-		</div>
-
+	</form>
 	</div><!--div class="container"-->
 
 <!--下-->

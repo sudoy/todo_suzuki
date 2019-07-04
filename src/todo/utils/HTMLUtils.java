@@ -2,15 +2,6 @@ package todo.utils;
 
 public class HTMLUtils {
 
-	private String importance;
-
-	public HTMLUtils() {}
-	public HTMLUtils(String importance) {
-		super();
-		this.importance = importance;
-	}
-
-
 	public static String importanceFormat(String importance) {
 
 		int num = Integer.parseInt(importance);
@@ -31,7 +22,7 @@ public class HTMLUtils {
 		return date;
 	}
 
-	public String creareRadioTags(int num){
+	public static String createRadioTags(int num, String importance){ //重要度のラジオボタンタグ生成 (entry,update)
 
 		String radioTag = "";
 		String imp = (importance == null) ? "3" : importance;
@@ -57,6 +48,55 @@ public class HTMLUtils {
 		}
 
 		return radioTag;
+	}
+
+	public static String createStatusTags(int num, String status){ //ステータスのラジオボタンタグ生成（update)
+
+		String statusTag = "";
+		String sta = (status == null) ? "0" : status;
+
+		if(num == 0) { //未完了…0
+			if(sta.isEmpty() || sta.equals("0")) {
+				statusTag = "<input type=\"radio\" name=\"status\" value=\"0\" checked>";
+			}else if(!sta.equals("0")){
+				statusTag = "<input type=\"radio\" name=\"status\" value=\"0\">";
+			}
+		}else if(num == 1) { //完了…1
+			if(!sta.equals("1")) {
+				statusTag = "<input type=\"radio\" name=\"status\" value=\"1\">";
+			}else if(sta.equals("1")){
+				statusTag = "<input type=\"radio\" name=\"status\" value=\"1\" checked>";
+			}
+		}
+
+		return statusTag;
+	}
+
+	public static String createStatusCheckbox(String status, String listId) { //ステータスのチェックボックスタグ生成 (index)
+
+		String checkbox = "";
+		if(status.equals("0")) { //未完了…0
+			checkbox = "<input type=\"checkbox\" name=\"status\" value=\""+ listId +"\">";
+		}else if(status.equals("1")) { //完了…1
+			checkbox = "<input type=\"checkbox\" name=\"status\" value=\""+ listId +"\" checked>";
+		}
+
+		return checkbox;
+	}
+
+	public static String createButtonClass(int num, String display) {
+
+		String buttonClass = "class=\"btn btn-warning\"";
+		if(num == 0) { //未完了ボタン
+			if(display != null && display.equals("incomp")) {
+				buttonClass = "class=\"btn btn-warning active\"";
+			}
+		}else if(num == 1) { //完了ボタン
+			if(display == null || display.equals("all")) {
+				buttonClass = "class=\"btn btn-warning active\"";
+			}
+		}
+		return buttonClass;
 	}
 
 }

@@ -6,13 +6,26 @@ public class IndexForm {
 	private String title;
 	private String importance;
 	private String limitTime;
+	private String status;
+	private String display;
 
-	public IndexForm(String listId, String title, String importance, String limitTime) {
+	public IndexForm(String listId, String title, String importance, String limitTime, String status, String display) {
 		super();
 		this.listId = listId;
 		this.title = title;
 		this.importance = importance;
 		this.limitTime = limitTime;
+		this.status = status;
+		this.display = display;
+	}
+
+	public IndexForm(String listId, String title, String importance, String limitTime, String status) {
+		super();
+		this.listId = listId;
+		this.title = title;
+		this.importance = importance;
+		this.limitTime = limitTime;
+		this.status = status;
 	}
 
 	public String getListId() {
@@ -45,6 +58,22 @@ public class IndexForm {
 
 	public void setLimitTime(String limitTime) {
 		this.limitTime = limitTime;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
 	}
 
 }
