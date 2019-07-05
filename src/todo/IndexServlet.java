@@ -27,15 +27,15 @@ public class IndexServlet extends HttpServlet {
 			return;
 		}
 
-		//表示の切り替えの値を取得
-		String display = req.getParameter("display");
-		if(display != null) { //ボタンを押したときだけ更新
-			session.setAttribute("display", display);
-		}
-		display = (String) session.getAttribute("display");
+		///表示の切り替えの値を取得
+		String display = (String) session.getAttribute("display");
+
+		//ソートの値を取得
+		String sort = (String) session.getAttribute("sort");
+
 
 		//formのリストを取得してJSPへ
-		req.setAttribute("list", new IndexService().findTodoList(display));
+		req.setAttribute("list", new IndexService().findTodoList(display,sort));
 
 		//メッセージを表示・リセット
 		req.setAttribute("complete", session.getAttribute("complete"));

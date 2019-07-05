@@ -27,13 +27,13 @@
 		</div>
 
 		<!--Todoリスト-->
-		<table class="table table-border-top">
+		<table class="table table-hover table-border-top">
 			<thead>
-				<tr>
-					<th class="col-xs-1 col-sm-1">#</th>
-					<th class="col-xs-4 col-sm-4">題名</th>
-					<th class="col-xs-2 col-sm-2">重要度</th>
-					<th class="col-xs-3 col-sm-3">期限</th>
+				<tr class="tableHead">
+					<th class="col-xs-1 col-sm-1" ${HTMLUtils.createSortLink(sort,'#')}># <small>${HTMLUtils.createSortIcon(sort,'#')}</small></th>
+					<th class="col-xs-4 col-sm-4" ${HTMLUtils.createSortLink(sort,'t')}>題名 <small>${HTMLUtils.createSortIcon(sort,'t')}</small></th>
+					<th class="col-xs-2 col-sm-2" ${HTMLUtils.createSortLink(sort,'i')}>重要度 <small>${HTMLUtils.createSortIcon(sort,'i')}</small></th>
+					<th class="col-xs-3 col-sm-3" ${HTMLUtils.createSortLink(sort,'l')}>期限 <small>${HTMLUtils.createSortIcon(sort,'l')}</small></th>
 				</tr>
 			</thead>
 			<tbody>

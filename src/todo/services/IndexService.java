@@ -14,7 +14,7 @@ import todo.utils.HTMLUtils;
 
 public class IndexService {
 
-	public List<IndexForm> findTodoList(String display) throws ServletException{
+	public List<IndexForm> findTodoList(String display, String sort) throws ServletException{
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -26,8 +26,13 @@ public class IndexService {
 			//データベース接続
 			con = DBUtils.getConnection();
 
+			//ソートの値に何も入ってないとき
+			if(sort == null || sort.equals("")) {
+				sort = "list_id";
+			}
+
 			//SQL
-			sql = "SELECT list_id,title,importance,limit_time,status FROM list ORDER BY list_id";
+			sql = "SELECT list_id,title,importance,limit_time,status FROM list ORDER BY " + sort;
 			//SELECT命令の準備・実行
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

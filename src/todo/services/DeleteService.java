@@ -38,7 +38,7 @@ public class DeleteService {
 			ps2 = con.prepareStatement(sql);
 			ps2.executeUpdate();
 
-			sql = "UPDATE list SET list_id = (@i := @i +1)";
+			sql = "UPDATE list SET list_id = (@i := @i +1) ORDER BY list_id";
 			ps3 = con.prepareStatement(sql);
 			ps3.executeUpdate();
 

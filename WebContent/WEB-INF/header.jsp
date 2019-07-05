@@ -29,7 +29,7 @@
 
 		<c:if test="${param.page == 'index.html'}">
 		<div class="collapse navbar-collapse padding-off" id="bs-example-navbar-collapse-1">
-			<form class="navbar-form navbar-right nav-btn-sm-margin" method="get" action="index.html">
+			<form class="navbar-form navbar-right nav-btn-sm-margin" method="get" action="set">
 
 				<!--表示切替-->
 				<div class="btn-group form-group btn-group-sm" role="group" aria-label="...">

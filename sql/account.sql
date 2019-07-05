@@ -8,3 +8,6 @@ create table account(
 
 insert into account(name, mail, password) values
 ('須藤雄一','yuichi.sudo@ssie.jp',sha2('0000',256));
+
+insert into account(name, mail, password) values
+('テスト','test@mail',sha2('pass',256));
