@@ -76,7 +76,7 @@ public class UpdateServlet extends HttpServlet {
 		}else {
 			session.setAttribute("error", error);
 			req.setAttribute("form", f);
-			getServletContext().getRequestDispatcher("/WEB-INF/entry.jsp").forward(req, resp);
+			getServletContext().getRequestDispatcher("/WEB-INF/update.jsp").forward(req, resp);
 		}
 	}
 
