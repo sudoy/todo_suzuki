@@ -55,8 +55,7 @@ public class EntryServlet extends HttpServlet {
 		EntryForm f = new EntryForm(title, detail, importance, limitTime);
 
 		//バリデーション
-		List<String> error = new ArrayList<>();
-		error = validate(f);//エラーメッセージのリストを取得
+		List<String> error = validate(f);//エラーメッセージのリストを取得
 
 		//insert
 		if(error.isEmpty()) {//リストが空だったら実行

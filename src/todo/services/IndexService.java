@@ -48,8 +48,9 @@ public class IndexService {
 				importance = HTMLUtils.importanceFormat(importance);
 				limitTime = HTMLUtils.dateFormat(limitTime);
 
-				//未完了のみ表示の時
 				IndexForm f = new IndexForm(listId, title, importance, limitTime, status);
+
+				//未完了のみ表示の時
 				if(display != null && display.equals("incomp") && status.equals("1")) { //
 					f = new IndexForm(listId, title, importance, limitTime, status,"hide");
 				}

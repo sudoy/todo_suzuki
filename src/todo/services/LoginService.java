@@ -10,7 +10,7 @@ import todo.utils.DBUtils;
 
 public class LoginService {
 
-	public String login(String mail, String password) throws ServletException {
+	public String login(String inputMail, String inputPass) throws ServletException {
 
 		Connection con = null;
 		PreparedStatement ps1 = null;
@@ -25,13 +25,13 @@ public class LoginService {
 			con = DBUtils.getConnection();
 
 			//SQL…メールアドレスの確認
-			sql = "SELECT count(id) as user,name,password FROM account WHERE mail = ?";
+			sql = "SELECT count(id) AS user,name,password FROM account WHERE mail = ?";
 			ps1 = con.prepareStatement(sql);
-			ps1.setString(1, mail);
+			ps1.setString(1, inputMail);
 			rs1 = ps1.executeQuery();;
 			rs1.next();
 
-			if(rs1.getInt("user") == 1) {
+			if(rs1.getInt("user") == 1) { //メール一致する人がいたら以下実行
 
 				//ユーザ情報
 				String userPass = rs1.getString("password");
@@ -40,7 +40,7 @@ public class LoginService {
 				//パスワードの確認
 				sql = "SELECT SHA2(?,256) AS inputPass";
 				ps2 = con.prepareStatement(sql);
-				ps2.setString(1, password);
+				ps2.setString(1, inputPass);
 				rs2 = ps2.executeQuery();
 				rs2.next();
 				if(rs2.getString("inputPass").equals(userPass)) {

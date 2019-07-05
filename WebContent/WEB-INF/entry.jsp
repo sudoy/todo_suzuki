@@ -56,7 +56,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="button" class="btn btn-default btn-gray" onclick="location.href='index.html'">キャンセル</button>
-					<button type="submit" class="btn btn-info">追加</button>
+					<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 追加</button>
 				</div>
 			</div>
 

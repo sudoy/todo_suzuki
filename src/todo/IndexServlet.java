@@ -34,7 +34,7 @@ public class IndexServlet extends HttpServlet {
 		String sort = (String) session.getAttribute("sort");
 
 
-		//formのリストを取得してJSPへ
+		//IndexFormのリストを取得してJSPへ
 		req.setAttribute("list", new IndexService().findTodoList(display,sort));
 
 		//メッセージを表示・リセット
@@ -61,7 +61,7 @@ public class IndexServlet extends HttpServlet {
 			return;
 		}
 
-		//完了・未完了の更新、メッセージ追加
+		//完了・未完了の更新、更新成功メッセージをセッションへ
 		List<String> complete = new UpdateService().updateStatus(req.getParameterValues("status"));
 		session.setAttribute("complete", complete);
 

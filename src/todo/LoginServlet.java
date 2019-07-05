@@ -30,12 +30,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//入力情報
-		String mail = req.getParameter("mail");
-		String password = req.getParameter("password");
-		LoginForm f = new LoginForm(mail);
+		String inputMail = req.getParameter("mail");
+		String inputPass = req.getParameter("password");
+		LoginForm f = new LoginForm(inputMail);
 
 		//ログインのチェック
-		String username = new LoginService().login(mail,password);
+		String username = new LoginService().login(inputMail,inputPass);
 		if(username != null){
 			HttpSession session = req.getSession();
 			session.setAttribute("username", username);

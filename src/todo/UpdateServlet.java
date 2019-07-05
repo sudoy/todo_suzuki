@@ -64,8 +64,7 @@ public class UpdateServlet extends HttpServlet {
 
 
 		//バリデーション
-		List<String> error = new ArrayList<>();
-		error = validate(f);//エラーメッセージのリストを取得
+		List<String> error = validate(f);//エラーメッセージのリストを取得
 
 		//insert
 		if(error.isEmpty()) {//リストが空だったら実行

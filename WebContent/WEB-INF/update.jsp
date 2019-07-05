@@ -68,8 +68,12 @@
 				<div class="col-sm-offset-2 col-sm-10">
 					<input type="hidden" name="listId" value="${form.listId}">
 					<button type="button" class="btn btn-default" onclick="location.href='index.html'">キャンセル</button>
-					<button type="submit" class="btn btn-info">更新</button>
-					<button type="button" class="btn btn-danger pull-right" onclick="location.href='delete?listId=${form.listId}'">削除</button>
+					<button type="submit" class="btn btn-info">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 更新
+					</button>
+					<button type="button" class="btn btn-danger pull-right" onclick="location.href='delete?listId=${form.listId}'">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 削除
+					</button>
 				</div>
 			</div>
 

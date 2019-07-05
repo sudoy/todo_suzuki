@@ -30,13 +30,13 @@ public class DeleteServlet extends HttpServlet {
 		String listId = req.getParameter("listId");
 
 		if(listId.isEmpty()) {
-			session.setAttribute("error", "No."+ listId +"の削除ができませんでした。");
+			session.setAttribute("error", "No."+ listId +"の削除に失敗しました。");
 		}else {
 			int count = new DeleteService().delete(listId);
 			if(count > 0) { //count…削除件数
 				session.setAttribute("complete",  "No."+ listId +"のTodoを削除しました。");
 			}else {
-				session.setAttribute("error", "No."+ listId +"の削除ができませんでした。");
+				session.setAttribute("error", "No."+ listId +"が見つかりませんでした。");
 			}
 		}
 		resp.sendRedirect("index.html");

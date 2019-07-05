@@ -31,7 +31,7 @@
 		<div class="collapse navbar-collapse padding-off" id="bs-example-navbar-collapse-1">
 			<form class="navbar-form navbar-right nav-btn-sm-margin" method="get" action="set">
 
-				<!--表示切替-->
+				<!--表示切替ボタン-->
 				<div class="btn-group form-group btn-group-sm" role="group" aria-label="...">
 					<button type="submit" ${HTMLUtils.createButtonClass(0,display)} name="display" value="incomp">
 						<span class="glyphicon glyphicon-repeat"></span> 未完了のみ
@@ -47,7 +47,7 @@
 						${username} <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						<li><a href="logout">ログアウト</a></li>
+						<li><a href="logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> ログアウト</a></li>
 					</ul>
 				</div>
 

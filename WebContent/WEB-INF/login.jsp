@@ -26,7 +26,9 @@
 				</div>
 
 				<div class="pull-right login-button">
-					<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> ログイン</button>
+					<button type="submit" class="btn btn-info">
+						<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> ログイン
+					</button>
 				</div>
 			</form>
 

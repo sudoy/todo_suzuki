@@ -114,7 +114,6 @@ public class HTMLUtils {
 	public static String createSortLink(String sort, String th) { //ソートのリンク用(index)
 
 		String sortData = "";
-		System.out.println(sort);
 
 		if(th.equals("t")) {
 			if(sort.equals("title")) {
